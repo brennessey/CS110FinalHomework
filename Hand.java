@@ -4,44 +4,48 @@ CS 110
 This file contaisn the Deck class which implements CardPile
 */
 import javax.swing.*;
+import java.util.ArrayList;
 
 /** 
 The deck card contains functionality for a deck used to play the game war 
 */
-public class Hand extends CardPile
+public class Hand 
 {
-   Card[] hand = new Card[26];
-   int num;
+   ArrayList<Card> hand;
    /**
    main constructor
    */
-   public Hand()
+   public Hand(Card[] cards)
    {
-      super();
-      pile.shuffle();
-      for(i=0;i<(pile.length/2);i++)
-      {
-         deck[i]=pile[i];
-      }
+      hand = new ArrayList<Card>();
    }
-   
    /**
    The dealCard funtion deals a card 
    */      
    public Card dealCard()
    {
-      ct--;
-      return pile[ct]
+      Card c = hand.remove(0);  //  remove it (returns removed object)
+         return c;
+   }
+   /** the isEmpty function lets determines if the hand is empty
+   */
+   public boolean isEmpty()
+   {
+      return (hand.size() == 0);
+   }
+   /**
+   The addToBottom method adds the ArrayList of won cards to the end of the hand ArrayList
+   */
+   public void addToBottom(ArrayList<Card> won)
+   {
+      for(int i=0;i<won.size();i++)
+      {
+         hand.add(won.get(i));
+      }
    }
    
-   public void addToBottom(Card card)
-   {
-      for(int i=0; i,deck.length;i++)
-      {
-         deck[i+1]=deck[i];
-      }
-      deck[0]=card;
-   }
+      
+   
 }
    
       

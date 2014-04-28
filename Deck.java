@@ -3,11 +3,12 @@ Brendan Hennessey
 CS 110
 This program contains the CardPile class
 */
+import javax.swing.*;
+import java.util.Random;
 
 /** 
 The CardPile defines functionality of a card pile for playing a game such as war 
 */
-import javax.swing.*;
 
 public class Deck
 {
@@ -36,7 +37,7 @@ public class Deck
          Card newClub = new Card(2,num1,im);
          pile[i] = newClub;
          num1++;
-         ct++
+         ct++;
       }
       //add all of the diamonds to the card array
       for (int i=13; i<=25;i++)
@@ -45,7 +46,7 @@ public class Deck
          Card newDiamond = new Card(4,num2,im);
          pile[i] = newDiamond;
          num2++;
-         ct++
+         ct++;
       }
       //add all of the hearts to the card array
       for (int i=26;i<=38;i++)
@@ -54,7 +55,7 @@ public class Deck
          Card newHeart = new Card(3,num3,im);
          pile[i] = newHeart;
          num3++;
-         ct++
+         ct++;
       }
       //add all of the spades to the card array
       for (int i=39;i<=51;i++)
@@ -63,7 +64,7 @@ public class Deck
          Card newSpade = new Card(1,num4,im);
          pile[i] = newSpade;
          num4++;
-         ct++
+         ct++;
       }
    }
    /** 
@@ -78,7 +79,7 @@ public class Deck
       {
          randNum = r.nextInt(ct);
          temp = pile[i];
-         deck[i]=pile[randNum];
+         pile[i]=pile[randNum];
          pile[randNum]=temp;
       }
    }
