@@ -40,14 +40,16 @@ public class Hand
    /**
    The addToBottom method adds the ArrayList of won cards to the end of the hand ArrayList
    */
-   public void addToBottom(ArrayList<Card> won)
+   public void addToBottom(Card won)
    {
-      for(int i=0;i<won.size();i++)
-      {
-         hand.add(won.get(i));
-      }
+      hand.add(won);
    }
-   
+   /** the topCard method returns the Card that is at element 0 */
+   public Card topCard()
+   {
+      return hand.get(0);
+   }
+   /** returns the number of elements */
    public int size()
    {
       return hand.size();

@@ -15,13 +15,15 @@ public class WarGame
    private Deck deck;
    private Card[] holder1 = new Card[26];
    private Card[] holder2 = new Card[26];
+   private ArrayList<Card> warCards = new ArrayList<Card>();
    private Hand hand1;
    private Hand hand2;
-   private ArrayList<Card> won = new ArrayList<Card>();
-   boolean gameover = false;
    
+   boolean gameover;
+   /** main constructor */
    public WarGame()
    {
+      gameover = false;
       deck = new Deck();
       /** shuffle the deck */
       deck.shuffle();
@@ -41,33 +43,37 @@ public class WarGame
       }
       /** create other hand */
       hand2 = new Hand(holder2);
-      /** play the game */
-    //   while(hand1.isEmpty()==false&&hand2.isEmpty()==false&&gameover==false);
-//       {
-//          playRound();
-//       }
             
    }
    /** the Round method controls the playing of a single round */
    public void playRound()
    {
+      if (hand1.size()==0||hand2.size()==0)
+      {
+         gameover = true;
+      }
       Card card1 = hand1.dealCard();
       Card card2 = hand2.dealCard();
-      won.add(card1);
-      won.add(card2);
       //if player 1 wins, add cards to their hand
       if (card1.getRank()>card2.getRank())
       {
-         hand1.addToBottom(won);
+         hand1.addToBottom(card1);
+         hand1.addToBottom(card2);
       }
       //if player 2 wins, add cards to their hand
       if (card2.getRank()<card2.getRank())
       {
-         hand2.addToBottom(won);
+         hand2.addToBottom(card1);
+         hand2.addToBottom(card2);
       }
       //if neither card is greater, proceed with a war.
       else
-         war();
+         if (hand1.size()>2 && hand2.size()>2)
+         {
+            war();
+         }
+         else
+            gameover=true;
    }
    
    /** The war method handles the occurence of a war */
@@ -79,30 +85,61 @@ public class WarGame
       Card cc1 = hand2.dealCard();
       Card cc2 = hand2.dealCard();
       
-      won.add(cp1); won.add(cp2); won.add(cc1); won.add(cc2);
+      // if the player wins, add the cards to the first deck.
       if (cp2.getRank()>cc2.getRank())
       {
-         hand2.addToBottom(won);
+         hand1.addToBottom(cp1);
+         hand1.addToBottom(cp2);
+         hand1.addToBottom(cc1);
+         hand1.addToBottom(cc2);
+         for (int i=0;i<warCards.size();i++)
+         {
+            hand1.addToBottom(warCards.get(i));
+         }
+         warCards.clear();//clear the holder 
       }
-      
+      //if the computer wins, add the cards to the second deck.
       if (cp2.getRank()<cc2.getRank())
       {
-         hand1.addToBottom(won);
+         //add all the cards to the bottom
+         hand2.addToBottom(cp1);
+         hand2.addToBottom(cp2);
+         hand2.addToBottom(cc1);
+         hand2.addToBottom(cc2);
+         for (int i=0;i<warCards.size();i++)
+         {
+            hand2.addToBottom(warCards.get(i));
+         }
+         warCards.clear();//clear the holder
+
       }
       
       else
+      {
+         warCards.add(cp1);
+         warCards.add(cp2);
+         warCards.add(cc1);
+         warCards.add(cc2);
          war();
+      }
    }
-   
+   /** the getHand1 method returns the first hand */
    public Hand getHand1()
    {
       return hand1;
    }
-   
+   /** the getHand2 method returns the 2nd hand */
    public Hand getHand2()
    {
       return hand2;
    }
+   /** the endGame method returns the value of the boolean gameover */
+   public boolean endGame()
+   {
+      return gameover;
+   }
+   
+   
    
 }
       
