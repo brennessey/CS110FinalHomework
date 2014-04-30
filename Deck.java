@@ -13,7 +13,7 @@ The CardPile defines functionality of a card pile for playing a game such as war
 public class Deck
 {
    final int SIZE = 52;
-   private Card[] pile = new Card[SIZE];
+   public Card[] pile = new Card[SIZE];
    int ct;
    private final static String[] images = {"acec.jpg","2c.jpg","3c.jpg", "4c.jpg", "5c.jpg", "6c.jpg", "7c.jpg",
                                         "8c.jpg","9c.jpg", "10c.jpg","jackc.jpg","queenc.jpg","kingc.jpg","aced.jpg",

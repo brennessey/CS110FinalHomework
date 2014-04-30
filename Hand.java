@@ -18,6 +18,10 @@ public class Hand
    public Hand(Card[] cards)
    {
       hand = new ArrayList<Card>();
+      for(int i=0; i<cards.length;i++)
+      {
+         hand.add(cards[i]);
+      }
    }
    /**
    The dealCard funtion deals a card 
@@ -44,7 +48,11 @@ public class Hand
       }
    }
    
-      
+   public int size()
+   {
+      return hand.size();
+   }
+         
    
 }
    
