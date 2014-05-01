@@ -22,7 +22,7 @@ public class Deck
                                         "4h.jpg","5h.jpg","6h.jpg","7h.jpg","8h.jpg","9h.jpg","10h.jpg","jackh.jpg",
                                         "queenh.jpg","kingh.jpg","aces.jpg","2s.jpg","3s.jpg","4s.jpg","5s.jpg","6s.jpg",
                                         "7s.jpg","8s.jpg","9s.jpg","10s.jpg","jacks.jpg","queens.jpg","kings.jpg"};
-   
+   /** Main constructor creates a full deck of cards */
    public Deck()
    {
       //counters for the ranks

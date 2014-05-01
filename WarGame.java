@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class WarGame
 {
-   /**variables*/
+   //variables
    private Deck deck;
    private Card[] holder1 = new Card[26];
    private Card[] holder2 = new Card[26];
